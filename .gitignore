@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+fuzzy-fortnight/wwwroot/css/
+fuzzy-fortnight/wwwroot/js/
+fuzzy-fortnight/wwwroot/lib/
+
 # User-specific files
 *.rsuser
 *.suo
