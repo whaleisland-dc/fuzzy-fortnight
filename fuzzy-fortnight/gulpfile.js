@@ -1,8 +1,16 @@
 /// <binding AfterBuild='default' Clean='clean' /> 
 
-const { dest, src, series } = require('gulp');
-const rename = require('gulp-rename');
+const { dest, src, series, parallel } = require('gulp');
+const autoprefixer = require('autoprefixer');
+const browserify = require('browserify');
+const cssnano = require('cssnano');
 const del = require('del');
+const notify = require('gulp-notify');
+const postcss = require('gulp-postcss');
+const rename = require('gulp-rename');
+const sass = require('gulp-sass')(require('sass'));
+const source = require('vinyl-source-stream');
+const tsify = require('tsify');
 
 function clean() {
     return del([
@@ -15,6 +23,37 @@ function clean() {
     ]);
 };
 
+function tsTranspile() {
+    return browserify({
+        basedir: ".",
+        debug = true,
+        entries: ["Scripts/site.ts"],
+        cache: {},
+        packageCache: {}
+    })
+        .plugins(tsify)
+        .bundle()
+        .pipe(source('site.js'))
+        .pipe(dest('wwwroot/js'))
+};
+
+function scssTranspile() {
+    const plugins = [
+        autoprefixer(),
+        cssnano()
+    ];
+
+    return src('Styles/**/*.scss')
+        .pipe(sass({
+            outputStyle: 'expanded'
+        }).on('error', function (err) {
+            sass.logError;
+            return notify().write(err);
+        }))
+        .pipe(postcss(plugins))
+        .pipe(dest('wwwroot/css'))
+};
+
 function copyNpmModules() {
     const npmFiles = [
         './node_modules/bootstrap/dist/**/*.js',
@@ -23,7 +62,8 @@ function copyNpmModules() {
         './node_modules/bootstrap-icons/font/**/*.css',
         './node_modules/bootstrap-icons/font/fonts/**/*.woff',
         './node_modules/bootstrap-icons/font/fonts/**/*.woff2',
-        './node_modules/bootstrap-icons/icons/**/*.svg'
+        './node_modules/bootstrap-icons/icons/**/*.svg',
+        './node_modules/bootswatch/dist/spacelab/**/*.css'
     ];
 
     return src(npmFiles, { base: './' })
@@ -33,7 +73,7 @@ function copyNpmModules() {
 
 exports.default = series(
     clean,
-    copyNpmModules
+    parallel(tsTranspile, scssTranspile, copyNpmModules)
 );
 
 exports.clean = series(

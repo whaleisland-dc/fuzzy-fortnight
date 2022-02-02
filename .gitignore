@@ -6,6 +6,8 @@
 fuzzy-fortnight/wwwroot/css/
 fuzzy-fortnight/wwwroot/js/
 fuzzy-fortnight/wwwroot/lib/
+fuzzy-fortnight/Scripts/*.js
+fuzzy-fortnight/Scripts/*.js.map
 
 # User-specific files
 *.rsuser
