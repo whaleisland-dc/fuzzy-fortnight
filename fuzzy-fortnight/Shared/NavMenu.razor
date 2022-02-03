@@ -1,28 +1,22 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">fuzzy-fortnight</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿<div class="bs-component">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
+            <a class="navbar-brand ps-3" href="#">Fuzzy Fortnight</a>
+            <button title="Navigation Menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="container-md">
+                <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+                    <div class="navbar-nav">
+                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All"> Home </NavLink>
+                        <NavLink class="nav-link" href="counter"> Counter </NavLink>
+                        <NavLink class="nav-link" href="fetchdata"> Fetch Data </NavLink>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </nav>
 </div>
