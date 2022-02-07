@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C416EE30-8849-11EC-AEFD-03F3D40A67DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Server", "SQL Server", "{C98528A0-8849-11EC-AEFD-03F3D40A67DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "v01.00.00", "v01.00.00", "{CF48D610-8849-11EC-AEFD-03F3D40A67DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +16,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CF48D610-8849-11EC-AEFD-03F3D40A67DD} = {C98528A0-8849-11EC-AEFD-03F3D40A67DD}
+		{C98528A0-8849-11EC-AEFD-03F3D40A67DD} = {C416EE30-8849-11EC-AEFD-03F3D40A67DD}
 	EndGlobalSection
 EndGlobal
